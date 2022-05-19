@@ -1,0 +1,50 @@
+snippet lg
+console.log($1)
+endsnippet
+
+snippet setup
+setup(props, { emit }) {
+
+}
+endsnippet
+
+snippet div
+<div>
+    ${0:${VISUAL}}
+</div>
+endsnippet
+
+snippet img
+<img src="$1" alt="$2" />
+endsnippet
+
+snippet template
+<template>
+    ${0:${VISUAL}}
+</template>
+endsnippet
+
+snippet scr
+<script>
+    ${0:${VISUAL}}
+</script>
+endsnippet
+
+snippet script
+<script>
+  export default {
+	  props: {},
+	  setup(props, { emit }) {
+		$1
+	  }
+  }
+</script>
+endsnippet
+
+snippet cfl
+class="flex justify-center items-center"
+endsnippet
+
+snippet cl
+class="$1"
+endsnippet

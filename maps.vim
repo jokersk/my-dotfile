@@ -19,7 +19,7 @@ let g:completion_enable_snippet = 'UltiSnips'
 
 
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+let g:UltiSnipsSnippetDirectories=['./UltiSnips']
 let @q = 'i//'
 
 :command FR :FlutterRestart

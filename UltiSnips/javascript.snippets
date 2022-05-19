@@ -1,0 +1,86 @@
+snippet lg
+console.log($1)
+endsnippet
+
+snippet pub
+public function $1() {
+	$2
+}
+endsnippet
+
+snippet code-us
+import { ref } from 'vue'
+import axios from 'axios'
+import camelcase from 'lodash/camelcase'
+export default function(defaultValue) {
+    const target = {}
+    const proxy = new Proxy(target, {
+        get(_, props) {
+            if (props in target) {
+                return target[props]
+            }
+            if (props.startsWith('fetch')) {
+                const path = camelcase(props.slice(5))
+                target[props] = async (receiver) => {
+                    const { data: { data } } = await axios.get(`api/${path}`)
+                    target[path].value = data
+                    receiver(data)
+                }
+                return target[props]
+            }
+
+            if (props.startsWith('set')) {
+                const path = camelcase(props.slice(3))
+                target[props] = (payload) => {
+                    target[path].value = payload
+                }
+                return target[props]
+            }
+
+            target[props] = ref(defaultValue)
+            return target[props]
+        }
+    })
+    return proxy
+}
+endsnippet
+
+snippet code-ob
+import { onMounted } from 'vue'
+const once = fn => () => {
+    if (fn) fn()
+    fn = null
+}
+export default function() {
+    let onDisplay = () => { }
+    const display = once(() => {
+        onDisplay()
+        observer.disconnect()
+    })
+
+    let observer
+    let observeOn = () => { }
+    onMounted(() => {
+        observer = new IntersectionObserver(
+            entries => {
+                if (entries[0].isIntersecting) {
+                    display()
+                }
+            },
+            { threshold: 1 }
+        )
+        observeOn(observer)
+    })
+    return {
+        onDisplay(fn) {
+            onDisplay = fn
+        },
+        observeOn(fn) {
+            observeOn = fn
+        },
+        display
+    }
+}
+endsnippet
+
+

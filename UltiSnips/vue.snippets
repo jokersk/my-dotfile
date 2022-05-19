@@ -1,0 +1,65 @@
+snippet lg
+console.log($1)
+endsnippet
+
+snippet div
+<${1:div}>
+    ${2:${VISUAL}}
+</$1>
+endsnippet
+
+snippet img
+<img src="$1" alt="$2" />
+endsnippet
+
+snippet template
+<template>
+    ${0:${VISUAL}}
+</template>
+endsnippet
+
+snippet try
+try {
+  $1
+} catch(e) {
+	$2
+} finally {
+	$3
+}
+endsnippet
+
+snippet for
+v-for="(item, index) in $1" :key="index"
+endsnippet
+
+snippet setup
+<script setup>
+$1
+</script>
+endsnippet
+
+snippet fl
+flex justify-center items-center
+endsnippet
+
+snippet "(.*).im" "import" r
+`!p
+match_group = match.group(1)
+last = match_group.split('/')[-1].replace(".vue", "")
+last = last[0].upper() + last[1:]
+snip.rv = 'import '+ last + ' from ' + "'" +  match_group.replace('src', '@') + "'" 
+`$1
+endsnippet
+
+snippet con
+const 
+endsnippet
+
+snippet fn
+() => { $1 }
+endsnippet
+
+snippet afn
+async () => { $1 }
+endsnippet
+
