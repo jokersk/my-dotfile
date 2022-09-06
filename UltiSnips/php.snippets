@@ -62,7 +62,7 @@ class $1 {
 endsnippet
 
 snippet "(.*).re" "return" r
-return `!p snip.rv = match.group(1)`;
+return `!p snip.rv = match.group(1) `;
 endsnippet
 
 snippet "(.*).class" "create class" r
@@ -100,5 +100,22 @@ endsnippet
 
 snippet lg 
 console.log($1)
+endsnippet
+
+snippet df
+/**
+ * @param $1
+ * @return 
+ */
+endsnippet
+
+snippet doc
+/**
+ * $1
+ */
+endsnippet
+
+snippet dd
+dd($1);
 endsnippet
 

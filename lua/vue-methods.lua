@@ -6,6 +6,11 @@ local M = {}
 local window = require('./window')
 local create_window = window.create_pop 
 local center = window.center
+buf = vim.api.nvim_get_current_buf()
+
+local function i(value)
+    print(vim.inspect(value))
+end
 
 local first = function(tbl)
     for k,v in pairs(tbl) do
@@ -14,7 +19,7 @@ local first = function(tbl)
 end
 
 local get_root_node = function() 
-    local buf = api.nvim_win_get_buf(0)
+    local buf = api.nvim_get_current_buf()
     local root_lang_tree = parsers.get_parser(buf)
     if not root_lang_tree then
         error('no root_lang_tree')
@@ -30,14 +35,15 @@ local get_root_node = function()
     error('can not found root node')
 end
 
-local get_class = function()
+
+local get_script = function()
     local root_node = get_root_node()
     for child in root_node:iter_children() do
-        if child:type() == 'class_declaration' or child:type() == 'trait_declaration' then
+        if child:type() == 'script_element' then
             return child
         end
     end
-    error('can not found class')
+    error('can not found script element')
 end
 
 
@@ -85,6 +91,20 @@ local get_first_named_child = function(node)
     end
     if child == nil then
         error('can not found first named child')
+    end
+    return child
+end
+
+local get_child = function(node, callback)
+    local child
+    for i=0,node:child_count() do
+        child = node:child(i)
+        if child ~= nil and callback(child) then
+            break
+        end
+    end
+    if child == nil then
+        error('can not found child')
     end
     return child
 end
@@ -162,14 +182,30 @@ local map_keys = function()
 end
 
 M.select = function()
-    local node = get_class()
-    local method_declarations = get_method_declaration(get_declaration_list(node))
-    store_global_methods(method_declarations)
-    local content = map(method_declarations, function(n) return first(getcontent(n)) end)
 
-    open_window()
-    map_keys()
-    update_view(content)
+    local query = vim.treesitter.parse_query('javascript', '(lexical_declaration) @foo')
+
+    local language_tree = vim.treesitter.get_parser(buf, 'vue')
+    local syntax_tree = language_tree:parse()
+    local root = syntax_tree[1]:root()
+
+    for _,captures,metadata in query:iter_matches(root, buf) do
+        print(1)
+    end
+
+    --[[ local script_element = get_script()
+    local raw = get_child(script_element, function(child)
+        if child:type() == 'raw_text' then
+            return true
+        end
+    end)
+
+    local lexical_declarations = get_child(raw, function(child)
+        return true
+    end) 
+    i(ts_unit.get_node_text(lexical_declarations, buf)) ]]
 end
+
+M.select()
 
 return M

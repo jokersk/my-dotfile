@@ -10,6 +10,13 @@ nnoremap <silent> s <cmd>:w<CR>
 nnoremap <silent> bd <cmd>:bd<CR>
 nnoremap <silent> <C-j> <cmd>:e #<CR>
 nnoremap <silent> <C-h> <cmd>:NvimTreeFindFileToggle<CR>
+nnoremap <silent> <C-w>> <cmd>:vertical resize +40<CR>
+nnoremap <silent> <C-w>< <cmd>:vertical resize -40<CR>
+nnoremap <silent> cw caw
+nnoremap <silent> dw daw
+nnoremap <silent> yii yi{
+nnoremap <silent> yaa ya{
+
 
 let g:user_emmet_expandabbr_key='<Tab>'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
@@ -20,6 +27,7 @@ let g:completion_enable_snippet = 'UltiSnips'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsSnippetDirectories=['./UltiSnips']
+
 let @q = 'i//'
 
 :command FR :FlutterRestart
@@ -27,3 +35,5 @@ let @q = 'i//'
 
 :command NC :NvimTreeClose
 :command NF :NvimTreeFindFileToggle
+
+command! AutoMethod lua require('auto_create_method').run()

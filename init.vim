@@ -15,6 +15,8 @@ set number
 set hidden
 set mouse=a
 set relativenumber
+set linespace=40
+set guifont="Hack Nerd Font Mono:h18"
 set noerrorbells
 syntax enable
 set fileencodings=utf-8,sjis,euc-jp,latin
@@ -143,8 +145,8 @@ endif
 " ---------------------------------------------------------------------
 set exrc
 " let test#php#phpunit#executable = 'docker-compose run --rm phpunit'
- let test#php#phpunit#executable = './vendor/bin/phpunit'
-" let test#php#phpunit#executable = './vendor/bin/pest'
+" let test#php#phpunit#executable = './vendor/bin/phpunit'
+let test#php#phpunit#executable = './vendor/bin/pest'
 let g:test#preserve_screen = 0
 if has('nvim')
   tmap <C-o> <C-\><C-n>
@@ -153,6 +155,8 @@ nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
+
+let g:neoformat_try_node_exe = 1
 
 "}}}
 " vim: set foldmethod=marker foldlevel=0:i
