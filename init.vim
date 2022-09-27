@@ -1,6 +1,7 @@
 " Fundamentals "{{{
 " ---------------------------------------------------------------------
 " init autocmd
+"
 autocmd!
 " set script encoding
 scriptencoding utf-8

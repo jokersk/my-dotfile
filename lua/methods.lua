@@ -1,3 +1,4 @@
+local vue_utils = require("vue-utils/init")
 local ts_unit = require("nvim-treesitter.ts_utils")
 local parsers = require "nvim-treesitter.parsers"
 local api = vim.api
@@ -162,6 +163,10 @@ local map_keys = function()
 end
 
 M.select = function()
+    if vim.bo.filetype == 'vue' then
+        vue_utils.pop()
+        return
+    end
     local node = get_class()
     local method_declarations = get_method_declaration(get_declaration_list(node))
     store_global_methods(method_declarations)

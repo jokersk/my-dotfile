@@ -182,7 +182,6 @@ local map_keys = function()
 end
 
 M.select = function()
-
     local query = vim.treesitter.parse_query('javascript', '(lexical_declaration) @foo')
 
     local language_tree = vim.treesitter.get_parser(buf, 'vue')
