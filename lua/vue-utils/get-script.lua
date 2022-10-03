@@ -12,7 +12,7 @@ local get_script = function(bufnr)
     ]])
     for _, captures, metadata in query:iter_matches(root, bufnr) do
         script = q.get_node_text(captures[1], bufnr)
-        loc = metadata.content[1]
+        loc = metadata[1]
     end
     if not script then
         error('can not found script in vue file')
@@ -20,10 +20,10 @@ local get_script = function(bufnr)
     return {
         script = script,
         loc = {
-            start_row = loc[1],
-            start_col = loc[2],
-            end_row = loc[3],
-            end_col = loc[4],
+            start_row = loc.range[1],
+            start_col = loc.range[2],
+            end_row = loc.range[3],
+            end_col = loc.range[4],
         }
     }
 end

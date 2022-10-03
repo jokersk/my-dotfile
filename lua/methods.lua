@@ -73,7 +73,8 @@ end
 
 local getcontent = function(node)
     local buf = vim.api.nvim_get_current_buf()
-    return ts_unit.get_node_text(node, buf) 
+    return {vim.treesitter.query.get_node_text(node, buf) } 
+    -- return ts_unit.get_node_text(node, buf) 
 end
 
 local get_first_named_child = function(node)

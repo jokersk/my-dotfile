@@ -33,7 +33,3 @@ let @q = 'i//'
 :command FR :FlutterRestart
 :command FC :FlutterLogClear
 
-:command NC :NvimTreeClose
-:command NF :NvimTreeFindFileToggle
-
-command! AutoMethod lua require('auto_create_method').run()

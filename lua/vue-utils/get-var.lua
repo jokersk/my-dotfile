@@ -14,10 +14,10 @@ local get_props_loc = function(str)
     )]])
     for _, captures, metadata in query:iter_matches(root, str) do
         local result = {}
-        local loc = metadata.content[1]
+        local loc = metadata[1]
         result['name'] = q.get_node_text(captures[1], str)
-        result['row'] = loc[1]
-        result['col'] = loc[2]
+        result['row'] = loc.range[1]
+        result['col'] = loc.range[2]
         table.insert(map, result)
     end
     return map

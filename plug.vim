@@ -2,6 +2,10 @@ if has("nvim")
   let g:plug_home = stdpath('data') . '/plugged'
 endif
 call plug#begin()
+  Plug 'theHamsta/nvim-dap-virtual-text'
+  Plug 'rcarriga/nvim-dap-ui'
+  Plug 'mfussenegger/nvim-dap'
+  " Plug 'vim-vdebug/vdebug'
   Plug 'jwalton512/vim-blade'
   Plug 'sbdchd/neoformat'
   Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'

@@ -29,8 +29,8 @@ set background=dark
 set nobackup
 set nohlsearch
 set showcmd
-set cmdheight=1
-set laststatus=2
+set cmdheight=0
+set laststatus=0
 set scrolloff=2
 set expandtab
 "let loaded_matchparen = 1
@@ -161,20 +161,4 @@ let g:neoformat_try_node_exe = 1
 
 "}}}
 " vim: set foldmethod=marker foldlevel=0:i
-"
-let g:dashboard_custom_section = {}
-let g:dashboard_custom_footer = {}
-let g:dashboard_custom_header = [
-   \'        ▄▄▄▄▄███████████████████▄▄▄▄▄     ',
-   \'      ▄██████████▀▀▀▀▀▀▀▀▀▀██████▀████▄   ',
-   \'     █▀████████▄             ▀▀████ ▀██▄  ',
-   \'    █▄▄██████████████████▄▄▄         ▄██▀ ',
-   \'     ▀█████████████████████████▄    ▄██▀  ',
-   \'       ▀████▀▀▀▀▀▀▀▀▀▀▀▀█████████▄▄██▀    ',
-   \'         ▀███▄              ▀██████▀      ',
-   \'           ▀██████▄        ▄████▀         ',
-   \'              ▀█████▄▄▄▄▄▄▄███▀           ',
-   \'                ▀████▀▀▀████▀             ',
-   \'                  ▀███▄███▀                ',
-   \'                     ▀█▀                   ',
-   \ ]
+

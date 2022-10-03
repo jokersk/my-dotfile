@@ -47,8 +47,8 @@ M.select = function()
     local loc = {}
     for key,value in ipairs(var_map) do
         if value['name'] == str then
-            loc.row = value['row'] + script_data['loc']['start_row'] + 1
-            loc.col = value['col'] + script_data['loc']['start_col']
+            loc.row = value.row + script_data['loc']['start_row'] + 1
+            loc.col = value.col + script_data['loc']['start_col']
         end
     end
     M.close()
