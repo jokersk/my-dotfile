@@ -1,7 +1,7 @@
 if has("nvim")
   let g:plug_home = stdpath('data') . '/plugged'
 endif
-call plug#begin()
+call rlug#begin()
   Plug 'theHamsta/nvim-dap-virtual-text'
   Plug 'rcarriga/nvim-dap-ui'
   Plug 'mfussenegger/nvim-dap'
@@ -18,7 +18,7 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'nvim-lua/completion-nvim'
   " Plug 'preservim/nerdtree'
-  Plug 'folke/tokyonight.nvim'
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   Plug 'NLKNguyen/papercolor-theme'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'b3nj5m1n/kommentary'
